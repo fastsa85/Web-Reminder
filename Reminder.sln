@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reminder", "Reminder\Reminder.csproj", "{DBD4800B-6190-4F6B-BEA3-4CDB8E45E5A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBD4800B-6190-4F6B-BEA3-4CDB8E45E5A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBD4800B-6190-4F6B-BEA3-4CDB8E45E5A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBD4800B-6190-4F6B-BEA3-4CDB8E45E5A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBD4800B-6190-4F6B-BEA3-4CDB8E45E5A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {402E1153-B9CC-4E0D-9F98-C12F183E0E27}
+	EndGlobalSection
+EndGlobal

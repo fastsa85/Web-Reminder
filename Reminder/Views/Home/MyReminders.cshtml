@@ -1,0 +1,33 @@
+﻿@model Reminder.ViewModels.MyRemindersViewModel
+
+@{
+    ViewBag.Title = "My Reminders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My Reminders</h2>
+<div>@Html.ActionLink("Create Reminder", "Create", "Reminders")</div>
+
+<table style="width:100%">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Due Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    @foreach (var reminderItem in Model.MyReminders)
+    {
+        <tr>
+            <th>@reminderItem.Title</th>
+            <th>@reminderItem.DueDate.ToString("dd MMMM yyyy")</th>
+            <th>
+                @Html.ActionLink("View", "Details", "Reminders", new { id = reminderItem.Id }, null)
+                @Html.ActionLink("Edit", "Edit", "Reminders", new { id = reminderItem.Id }, null)
+                @Html.ActionLink("Delete", "Delete", "Reminders", new { id = reminderItem.Id }, null)
+            </th>
+        </tr>
+    }
+</table>
+
+
