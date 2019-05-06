@@ -184,14 +184,21 @@
     <Compile Include="Migrations\201905021439557_RemindersTable.Designer.cs">
       <DependentUpon>201905021439557_RemindersTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905032103494_AddUserRemineRelations.cs" />
+    <Compile Include="Migrations\201905032103494_AddUserRemineRelations.Designer.cs">
+      <DependentUpon>201905032103494_AddUserRemineRelations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CustomControllerFactory.cs" />
     <Compile Include="Models\DataModels\ReminderDbContext.cs" />
+    <Compile Include="Models\DataModels\UserReminderRelationsDbContext.cs" />
+    <Compile Include="Models\DataModels\UserReminderRelationsRepository.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Interfaces\IReminderRepository.cs" />
+    <Compile Include="Models\Interfaces\IUserReminderRelationsRepository.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\ReminderRepository.cs" />
+    <Compile Include="Models\DataModels\UserReminderRelation.cs" />
+    <Compile Include="Models\DataModels\ReminderRepository.cs" />
     <Compile Include="Models\DataModels\ReminderItemModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -278,6 +285,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905021439557_RemindersTable.resx">
       <DependentUpon>201905021439557_RemindersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905032103494_AddUserRemineRelations.resx">
+      <DependentUpon>201905032103494_AddUserRemineRelations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

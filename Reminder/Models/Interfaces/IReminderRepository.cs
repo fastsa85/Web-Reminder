@@ -13,5 +13,6 @@ namespace Reminder.Models.Interfaces
         void CreateReminder(ReminderItemModel reminderItem);
         void UpdateReminder(int id, ReminderItemModel reminderItem);
         void DeleteReminder(int id);
+        int GetReminderId(ReminderItemModel reminder);
     }
 }

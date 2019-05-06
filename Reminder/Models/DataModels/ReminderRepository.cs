@@ -49,5 +49,12 @@ namespace Reminder.Models
             _reminderDbContext.Reminders.Remove(item);
             _reminderDbContext.SaveChanges();
         }
+
+        public int GetReminderId(ReminderItemModel reminder)
+        {
+            return _reminderDbContext.Reminders
+                .Where(x => x.Title == reminder.Title && x.Description == reminder.Description && x.DueDate == reminder.DueDate)
+                .FirstOrDefault().Id;
+        }
     }
 }
