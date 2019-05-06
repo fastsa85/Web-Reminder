@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Microsoft.Owin;
 using Reminder.ViewModels;
 using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security.Facebook;
 
 namespace Reminder.Controllers
 {
@@ -27,18 +28,19 @@ namespace Reminder.Controllers
         
         public ActionResult Details(int id)
         {
-            if (_userReminderRelationsRepository.IsUserHasAccessToReminder(User.Identity.GetUserId(), id))
+            var reminderViewModel = new ReminderDetailsViewModel()
             {
-                var reminderItem = new ReminderDetailsViewModel()
-                {
-                    ReminderItem = _reminderRepository.GetReminder(id)
-                };
-                return View(reminderItem);
-            }
-            else
-            {
-                return RedirectToAction("MyReminders", "Home");
-            }
+                ReminderItem = _reminderRepository.GetReminders().Where(reminder => reminder.Id == id)
+                    .Join(
+                        _userReminderRelationsRepository.GetUserReminderRelations()
+                            .Where(relation => relation.UserId == User.Identity.GetUserId()),
+                        reminder => reminder.Id,
+                        relation => relation.ReminderId,
+                        (reminder, relation) => reminder).FirstOrDefault()
+            };
+            if (reminderViewModel.ReminderItem != null)
+                return View(reminderViewModel);
+            return RedirectToAction("MyReminders", "Home");
         }
         
         public ActionResult Create()
@@ -57,18 +59,19 @@ namespace Reminder.Controllers
         
         public ActionResult Edit(int id)
         {
-            if (_userReminderRelationsRepository.IsUserHasAccessToReminder(User.Identity.GetUserId(), id))
+            var reminderViewModel = new ReminderDetailsViewModel()
             {
-                var reminderItem = new ReminderDetailsViewModel()
-                {
-                    ReminderItem = _reminderRepository.GetReminder(id)
-                };
-                return View(reminderItem);
-            }
-            else
-            {
-                return RedirectToAction("MyReminders", "Home");
-            }
+                ReminderItem = _reminderRepository.GetReminders().Where(reminder => reminder.Id == id)
+                    .Join(
+                        _userReminderRelationsRepository.GetUserReminderRelations()
+                            .Where(relation => relation.UserId == User.Identity.GetUserId()),
+                        reminder => reminder.Id,
+                        relation => relation.ReminderId,
+                        (reminder, relation) => reminder).FirstOrDefault()
+            };
+            if (reminderViewModel.ReminderItem != null)
+                return View(reminderViewModel);
+            return RedirectToAction("MyReminders", "Home");
         }
         
         [HttpPost]
