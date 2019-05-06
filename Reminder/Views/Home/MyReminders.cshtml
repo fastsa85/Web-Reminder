@@ -10,7 +10,7 @@
 
 <table style="width:100%">
     <thead>
-        <tr>
+        <tr class ="text-uppercase">
             <th>Title</th>
             <th>Due Date</th>
             <th>Actions</th>
@@ -18,13 +18,17 @@
     </thead>
     @foreach (var reminderItem in Model.MyReminders)
     {
-        <tr>
+        var textclass = "text-success";
+        var daysRemaining = (reminderItem.DueDate - DateTime.Now).Days;
+        if (daysRemaining <= 1) { textclass = "text-danger"; }
+        else if (daysRemaining <= 3) { textclass = "text-warning"; }        
+        <tr class ="@textclass">
             <th>@reminderItem.Title</th>
             <th>@reminderItem.DueDate.ToString("dd MMMM yyyy")</th>
-            <th>
-                @Html.ActionLink("View", "Details", "Reminders", new { id = reminderItem.Id }, null)
-                @Html.ActionLink("Edit", "Edit", "Reminders", new { id = reminderItem.Id }, null)
-                @Html.ActionLink("Delete", "Delete", "Reminders", new { id = reminderItem.Id }, null)
+            <th class ="btn-group-xs">
+                @Html.ActionLink("View", "Details", "Reminders", new { id = reminderItem.Id }, new {@class = "btn-link"})
+                @Html.ActionLink("Edit", "Edit", "Reminders", new { id = reminderItem.Id }, new { @class = "btn-link" })
+                @Html.ActionLink("Delete", "Delete", "Reminders", new { id = reminderItem.Id }, new { @class = "btn-link" })
             </th>
         </tr>
     }
